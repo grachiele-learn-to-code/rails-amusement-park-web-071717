@@ -9,3 +9,8 @@ Height Requirement
   <%= f.hidden_field :attraction_id, value: params[:id] %>
   <%= f.submit "Go on this ride" %>
 <% end %>
+
+<% if current_user.admin? %>
+	<%= link_to "Edit Attraction", edit_attraction_path(params[:id]) %>
+
+<% end %>
