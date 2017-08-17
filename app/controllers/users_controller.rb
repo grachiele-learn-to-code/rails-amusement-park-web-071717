@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: [:show]
 
   def index
   end
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = set_user
+    @user = find_user
   end
 
   def edit
@@ -32,8 +33,12 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :password, :password_confirmation, :nausea, :happiness, :tickets, :height, :admin)
   end
 
-  def set_user
+  def find_user
     User.find_by(id: params[:id])
+  end
+
+  def require_login
+    redirect_to '/' unless session[:user_id]
   end
 
 end
