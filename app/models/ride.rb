@@ -19,7 +19,8 @@ class Ride < ActiveRecord::Base
   		self.user.nausea += self.attraction.nausea_rating
   		# save user changes
   		self.user.save
-
+      
+      "Thanks for riding the #{attraction.name}!"
 
   	# first fail case
   	# user is tall enough to ride but not enough tickets

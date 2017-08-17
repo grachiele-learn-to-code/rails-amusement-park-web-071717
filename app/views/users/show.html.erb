@@ -1,8 +1,9 @@
+<%= flash[:message] %>
+
 <label>Name: </label><%= @user.name %>
-<label>Ticket: </label><%= @user.tickets %>
+<label>Tickets: </label><%= @user.tickets %>
 <label>Mood: </label><%= @user.mood %>
 <label>Height: </label><%= @user.height %>
 <label>ADMIN: </label><%= @user.admin %>
 
 <%= link_to "See attractions", attractions_path%>
-
