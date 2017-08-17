@@ -8,10 +8,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
+    @user = User.create(user_params)
+    session[:user_id] = @user.id
+    redirect_to @user
   end
 
   def show
+    @user = set_user
   end
 
   def edit
@@ -28,5 +31,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation, :nausea, :happiness, :tickets, :height, :admin)
   end
-  
+
+  def set_user
+    User.find_by(id: params[:id])
+  end
+
 end
