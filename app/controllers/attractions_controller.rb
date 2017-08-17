@@ -1,4 +1,5 @@
 class AttractionsController < ApplicationController
+	before_action :admin?, except: [:index, :show]
 
 	def index
 		@attractions = Attraction.all
