@@ -4,3 +4,8 @@ Ticket Requirement
 <%= @attraction.tickets %>
 Height Requirement
 <%= @attraction.min_height %>
+<%= form_for ride_path do |f| %>
+  <%= f.hidden :user_id, value: session[:user_id] %>
+  <%= f.hidden :attraction_id, value: params[:id] %>
+  <%= f.submit "Go on this ride" %>
+<% end %>

@@ -4,10 +4,11 @@ class RidesController < ApplicationController
   end
 
   def create
-    @attraction = Attraction.find_by(id: params[:id])
-		@user = User.find_by(id: session[:user_id])
-		@ride = Ride.new(user: @user, attraction: @attraction)
-    @ride.take_ride
+    # @attraction = Attraction.find_by(id: params[:id])
+		# @user = User.find_by(id: session[:user_id])
+		@ride = Ride.create(user: @user, attraction: @attraction)
+    # @ride.take_ride
+    redirect_to user_path
   end
 
 end

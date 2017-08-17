@@ -15,13 +15,13 @@ class Ride < ActiveRecord::Base
   		self.user.tickets -= self.attraction.tickets
   		# adjust user happiness
   		self.user.happiness += self.attraction.happiness_rating
-  		# adjust user nausea 
+  		# adjust user nausea
   		self.user.nausea += self.attraction.nausea_rating
   		# save user changes
   		self.user.save
 
 
-  	# first fail case 
+  	# first fail case
   	# user is tall enough to ride but not enough tickets
   	elsif self.user.height >= self.attraction.min_height && self.user.tickets < self.attraction.tickets
   		"Sorry. You do not have enough tickets to ride the #{attraction.name}."
