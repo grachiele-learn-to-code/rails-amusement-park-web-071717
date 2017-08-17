@@ -11,6 +11,10 @@ class SessionsController < ApplicationController
   	@user = User.find_by(name: params[:user][:name])
 
     if @user.authenticate(params[:user][:password])
+      
+      # PLEASE DONT BREK EVERYHING
+      session[:admin] = @user.admin
+
     	session[:user_id] = @user.id
     	redirect_to @user
     else

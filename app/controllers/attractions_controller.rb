@@ -1,6 +1,4 @@
 class AttractionsController < ApplicationController
-	before_action :admin?, except: [:index, :show]
-
 
 	def index
 		@attractions = Attraction.all
@@ -28,12 +26,5 @@ class AttractionsController < ApplicationController
 	end
 
 
-
-	private
-
-	def admin?
-		user = User.find_by(id: session[:user_id])
-		user.admin
-	end
 
 end
